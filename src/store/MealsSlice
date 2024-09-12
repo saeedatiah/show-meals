@@ -1,0 +1,73 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { count } from 'console';
+
+
+const url="https://localhost:7067/Excel/ReadExcelFrom_FormData";
+
+
+export const fetchMeals = createAsyncThunk(
+    'meal/fetchMeals',
+    async (_, thunkAPI) => {
+      const { rejectWithValue } = thunkAPI;
+
+      console.log("aaaaaaaaa2");
+
+      try {
+        const res = await fetch(`${url}`);
+        const data = await res.json();
+        console.log("data from function reducer");
+        console.log(data);
+        return data;
+      } catch (error) {
+        console.log("errrrrrrrrrror");
+
+        console.log('eeeeee');
+        return rejectWithValue(error.message);
+      }
+    }
+  );
+
+  
+
+
+
+  const initialStateReducer ={meals: [],isPageLoading:false};
+
+
+
+  const MealsSlice = createSlice({
+    name: 'meal',
+    initialState: initialStateReducer,
+    reducers: {
+        openModal: (state, action) => {
+            state.isPageLoading = action.payload;
+          },
+      
+    },
+    extraReducers: (builder) => {
+      //fetch
+        builder
+        .addCase(fetchMeals.fulfilled, (state, { payload }) => {
+            console.log('fulfilled');
+            //state.isPageLoading=true;
+            state.meals=payload;
+        })
+        .addCase(fetchMeals.pending, (state, { payload }) => {
+            //state.isPageLoading=true;
+            console.log('pending');
+        })
+
+        
+        
+    }, 
+  });
+
+  
+
+  //export const {openModal,changeStatus,addToCart,removeFromCart,increaseQuan,decreaseQuan,clearCart,switchAsAdmin,searchItems} = MealSlice.actions;
+
+  export const {openModal} = MealsSlice.actions;
+
+  export default MealsSlice.reducer;
+
+
