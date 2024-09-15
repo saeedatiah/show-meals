@@ -1,31 +1,55 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { count } from 'console';
 
 
 const url="https://localhost:7067/Excel/ReadExcelFrom_FormData";
 
 
+
+
 export const fetchMeals = createAsyncThunk(
-    'meal/fetchMeals',
-    async (_, thunkAPI) => {
-      const { rejectWithValue } = thunkAPI;
+  'meal/fetchMeals',
+  async (_, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
 
-      console.log("aaaaaaaaa2");
+    console.log("aaaaaaaaa2");
 
-      try {
-        const res = await fetch(`${url}`);
-        const data = await res.json();
-        console.log("data from function reducer");
-        console.log(data);
-        return data;
-      } catch (error) {
-        console.log("errrrrrrrrrror");
+    try {
+      const res = await fetch(`${url}`,{mode:"cors"});
+      const data = await res.json();
+      console.log("data from function reducer");
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log("errrrrrrrrrror");
 
-        console.log('eeeeee');
-        return rejectWithValue(error.message);
-      }
+      console.log('eeeeee');
+      return rejectWithValue(error.message);
     }
-  );
+  }
+);
+
+
+// export const fetchMeals = createAsyncThunk(
+//     'meal/fetchMeals',
+//     async (_, thunkAPI) => {
+//       const { rejectWithValue } = thunkAPI;
+
+//       console.log("aaaaaaaaa2");
+
+//       try {
+//         const res = await fetch(`${url}`,{mode:"cors"});
+//         const data = await res.json();
+//         console.log("data from function reducer");
+//         console.log(data);
+//         return data;
+//       } catch (error) {
+//         console.log("errrrrrrrrrror");
+
+//         console.log('eeeeee');
+//         return rejectWithValue(error.message);
+//       }
+//     }
+//   );
 
   
 
