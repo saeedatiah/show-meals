@@ -14,3 +14,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.faded_img{
+  border-image: fill 0 linear-gradient(rgba(67, 67, 67, 0.067),#6c6c6c);
+  border-radius: inherit;
+}
+.test{
+  color: blue;
+}
