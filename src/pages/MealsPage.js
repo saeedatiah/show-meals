@@ -17,16 +17,20 @@ const MealsPage = () => {
 
     useEffect(() => {
         dispatch(fetchMeals());
-      }, [dispatch]);
-
-      useEffect(() => {
         dispatch(fetchCats());
       }, [dispatch]);
-      console.log("aaaaaaaaa1");
 
-      const {meals} =useSelector((state) => state.meals);
-      const cats =useSelector((state) => state.ctas);//problem
-      // const cats=[];
+      // useEffect(() => {
+      //   dispatch(fetchCats());
+      // }, [dispatch]);
+      // console.log("aaaaaaaaa1");
+
+      const {meals,cats} =useSelector((state) => state.meals);
+      const test =useSelector((state) => state);
+      console.log("***********")
+      console.log(cats)
+      //const cats =useSelector((state) => state.ctas);//problem
+       //const cats=[];
       console.log("aaaaaaaaa3");
 
       const catsList =
@@ -54,8 +58,11 @@ const MealsPage = () => {
 
   return (
     <div>
+    <div class="h-28 overflow-x-auto border border-gray-300 ">
+            <ul className='flex flex-wrap gap-2  justify-around'>{cats&&catsList}</ul> 
+    </div>
     <div className='content-center items-start'>
-<ul className='flex flex-wrap gap-2  justify-around'>{cats&&catsList}</ul> 
+
 <ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
 </div>
       
