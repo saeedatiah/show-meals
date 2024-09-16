@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
-const url="https://localhost:7067/Excel/ReadExcelFrom_FormData";
 
 
 
@@ -14,7 +13,29 @@ export const fetchMeals = createAsyncThunk(
     console.log("aaaaaaaaa2");
 
     try {
-      const res = await fetch(`${url}`,{mode:"cors"});
+      const res = await fetch(`https://localhost:7067/Items`,{mode:"cors"});
+      const data = await res.json();
+      console.log("data from function reducer");
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log("errrrrrrrrrror");
+
+      console.log('eeeeee');
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchCats = createAsyncThunk(
+  'meal/fetchCats',
+  async (_, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+
+    console.log("aaaaaaaaa2");
+
+    try {
+      const res = await fetch(`https://localhost:7067/Categories`,{mode:"cors"});
       const data = await res.json();
       console.log("data from function reducer");
       console.log(data);
@@ -55,7 +76,7 @@ export const fetchMeals = createAsyncThunk(
 
 
 
-  const initialStateReducer ={meals: [],isPageLoading:false};
+  const initialStateReducer ={meals: [],cats:[],isPageLoading:false};
 
 
 
@@ -80,6 +101,16 @@ export const fetchMeals = createAsyncThunk(
             //state.isPageLoading=true;
             console.log('pending');
         })
+        .addCase(fetchCats.fulfilled, (state, { payload }) => {
+          console.log('fulfilled');
+          //state.isPageLoading=true;
+          state.cats=payload;
+        })
+        .addCase(fetchCats.pending, (state, { payload }) => {
+            //state.isPageLoading=true;
+            console.log('pending');
+        })
+
 
         
         

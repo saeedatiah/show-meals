@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import {fetchMeals} from '../store/MealsSlice';
+import {fetchMeals,fetchCats} from '../store/MealsSlice';
 import {useEffect } from 'react';
 import Meal from '../components/Meal';
+import Categories from '../components/Categories';
 
 
 const MealsPage = () => {
@@ -17,10 +18,27 @@ const MealsPage = () => {
     useEffect(() => {
         dispatch(fetchMeals());
       }, [dispatch]);
-    //   console.log("aaaaaaaaa1");
+
+      useEffect(() => {
+        dispatch(fetchCats());
+      }, [dispatch]);
+      console.log("aaaaaaaaa1");
 
       const {meals} =useSelector((state) => state.meals);
+      const cats =useSelector((state) => state.ctas);//problem
+      // const cats=[];
       console.log("aaaaaaaaa3");
+
+      const catsList =
+      cats.length > 0
+      ? cats.map((cat) => (
+          <li
+            key={cat.id}
+          >
+          <Categories cat={cat}/>
+          </li>
+        ))
+      : 'no Cats found';
 
 
       const orignalMeal =
@@ -37,8 +55,7 @@ const MealsPage = () => {
   return (
     <div>
     <div className='content-center items-start'>
-    aaannnnnnnnnnnhhhhh
-    <h1>iuyiuygug</h1>
+<ul className='flex flex-wrap gap-2  justify-around'>{cats&&catsList}</ul> 
 <ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
 </div>
       
