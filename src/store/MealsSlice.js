@@ -76,7 +76,7 @@ export const fetchCats = createAsyncThunk(
 
 
 
-  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,tempMeal:[]};
+  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,orignalMeals:[]};
 
 
 
@@ -88,8 +88,11 @@ export const fetchCats = createAsyncThunk(
             state.isPageLoading = action.payload;
           },
         filterMeals: (state, action) => {
-          state.tempMeal=state.meals;
-          state.meals=state.tempMeal.filter((meal)=>meal.CatID !== action.payload.Id);
+          //state.tempMeal=state.meals;
+          if(action.payload.Id===0)
+            state.meals=state.orignalMeals
+          else
+            state.meals=state.orignalMeals.filter((meal)=>meal.CatID === action.payload.Id);
         },
       
     },
@@ -99,6 +102,7 @@ export const fetchCats = createAsyncThunk(
         .addCase(fetchMeals.fulfilled, (state, { payload }) => {
             console.log('fulfilled');
             //state.isPageLoading=true;
+            state.orignalMeals=payload;
             state.meals=payload;
         })
         .addCase(fetchMeals.pending, (state, { payload }) => {
@@ -108,7 +112,9 @@ export const fetchCats = createAsyncThunk(
         .addCase(fetchCats.fulfilled, (state, { payload }) => {
           console.log('fulfilled');
           //state.isPageLoading=true;
-          state.cats=payload;
+          var tempCat=payload;
+          tempCat.splice(0, 0, {Id:0,Name:"الكل"})
+          state.cats=tempCat;
         })
         .addCase(fetchCats.pending, (state, { payload }) => {
             //state.isPageLoading=true;
@@ -125,7 +131,7 @@ export const fetchCats = createAsyncThunk(
 
   //export const {openModal,changeStatus,addToCart,removeFromCart,increaseQuan,decreaseQuan,clearCart,switchAsAdmin,searchItems} = MealSlice.actions;
 
-  export const {openModal} = MealsSlice.actions;
+  export const {openModal,filterMeals} = MealsSlice.actions;
 
   export default MealsSlice.reducer;
 
