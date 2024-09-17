@@ -4,6 +4,8 @@ import {fetchMeals,fetchCats} from '../store/MealsSlice';
 import {useEffect } from 'react';
 import Meal from '../components/Meal';
 import Categories from '../components/Categories';
+import { Swiper, SwiperSlide } from "swiper/react";
+
 
 
 const MealsPage = () => {
@@ -58,8 +60,14 @@ const MealsPage = () => {
 
   return (
     <div>
-    <div class="h-28 overflow-x-auto border border-gray-300 ">
-            <ul className='flex flex-wrap gap-2  justify-around'>{cats&&catsList}</ul> 
+    
+
+    
+
+    
+
+    <div class="  scrollbar-hide overflow-x-auto my-1">
+            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
     </div>
     <div className='content-center items-start'>
 

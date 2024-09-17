@@ -76,7 +76,7 @@ export const fetchCats = createAsyncThunk(
 
 
 
-  const initialStateReducer ={meals: [],cats:[],isPageLoading:false};
+  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,tempMeal:[]};
 
 
 
@@ -87,6 +87,10 @@ export const fetchCats = createAsyncThunk(
         openModal: (state, action) => {
             state.isPageLoading = action.payload;
           },
+        filterMeals: (state, action) => {
+          state.tempMeal=state.meals;
+          state.meals=state.tempMeal.filter((meal)=>meal.CatID !== action.payload.Id);
+        },
       
     },
     extraReducers: (builder) => {
