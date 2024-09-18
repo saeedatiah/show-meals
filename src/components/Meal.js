@@ -5,7 +5,7 @@ const Meal = ({meal}) => {
 
   return (
     <div className='overflow-hidden rounded-lg w-28 h-28 relative' >
-    <img src={shawrma} alt="" class="w-fit h-fit object-cover "/>
+    <img src="file:///localhost:7067/C://img/12.JPG" alt="" class="w-fit h-fit object-cover "/>
     <div className='absolute bottom-0 h-9 px-1 truncate text-right text-bold w-full bg-gradient-to-t 
                     from-black to-transparent text-custom-5' >
         {meal.Name}

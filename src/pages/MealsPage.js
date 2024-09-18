@@ -5,6 +5,9 @@ import {useEffect } from 'react';
 import Meal from '../components/Meal';
 import Categories from '../components/Categories';
 import { Swiper, SwiperSlide } from "swiper/react";
+import { motion, AnimatePresence } from "framer-motion";
+import FavMeal from '../components/FavMeal';
+
 
 
 
@@ -46,32 +49,47 @@ const MealsPage = () => {
         ))
       : 'no Cats found';
 
+     
+
 
       const orignalMeal =
       meals.length > 0
       ? meals.map((meal) => (
+        <AnimatePresence>
           <li
             key={meal.id}
           >
           <Meal meal={meal}/>
+          
           </li>
+          </AnimatePresence>
         ))
       : 'no Items found';
+      
+
+
+      // const orignalMeal =
+      // meals.length > 0
+      // ? meals.map((meal) => (
+      //     <li
+      //       key={meal.id}
+      //     >
+      //     <Meal meal={meal}/>
+      //     </li>
+      //   ))
+      // : 'no Items found';
 
   return (
     <div>
-    
-
-    
-
-    
+   
 
     <div class="  scrollbar-hide overflow-x-auto my-1">
             <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
     </div>
     <div className='content-center items-start'>
-
-<ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
+    <motion.div layout className="popular-movies">
+    <ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
+    </motion.div>
 </div>
       
     </div>
