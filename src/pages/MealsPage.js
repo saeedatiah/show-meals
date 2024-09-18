@@ -7,6 +7,7 @@ import Categories from '../components/Categories';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, AnimatePresence } from "framer-motion";
 import FavMeal from '../components/FavMeal';
+import Cart from '../components/Cart';
 
 
 
@@ -80,19 +81,21 @@ const MealsPage = () => {
       // : 'no Items found';
 
   return (
-    <div>
+//     <div>
    
 
-    <div class="  scrollbar-hide overflow-x-auto my-1">
-            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
-    </div>
-    <div className='content-center items-start'>
-    <motion.div layout className="popular-movies">
-    <ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
-    </motion.div>
-</div>
+//     <div class="  scrollbar-hide overflow-x-auto my-1">
+//             <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
+//     </div>
+//     <div className='content-center items-start'>
+//     <motion.div layout className="popular-movies">
+//     <ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
+//     </motion.div>
+// </div>
       
-    </div>
+//     </div>
+
+<Cart/>
   )
 }
 
