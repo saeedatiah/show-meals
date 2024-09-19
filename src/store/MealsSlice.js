@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+const url="https://192.168.1.43:7067"
 
 
 
@@ -13,7 +14,7 @@ export const fetchMeals = createAsyncThunk(
     console.log("aaaaaaaaa2");
 
     try {
-      const res = await fetch(`https://localhost:7067/Items`,{mode:"cors"});
+      const res = await fetch(`${url}/Items`,{mode:"cors"});
       const data = await res.json();
       console.log("data from function reducer");
       console.log(data);
@@ -35,7 +36,7 @@ export const fetchCats = createAsyncThunk(
     console.log("aaaaaaaaa2");
 
     try {
-      const res = await fetch(`https://localhost:7067/Categories`,{mode:"cors"});
+      const res = await fetch(`${url}/Categories`,{mode:"cors"});
       const data = await res.json();
       console.log("data from function reducer");
       console.log(data);
@@ -76,7 +77,7 @@ export const fetchCats = createAsyncThunk(
 
 
 
-  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,orignalMeals:[]};
+  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,orignalMeals:[],carts:[],totalPrice:0,count:0};
 
 
 
@@ -93,6 +94,54 @@ export const fetchCats = createAsyncThunk(
             state.meals=state.orignalMeals
           else
             state.meals=state.orignalMeals.filter((meal)=>meal.CatID === action.payload.Id);
+        },
+        addToCart: (state, {payload}) => {
+          const inCart= state.carts.find((item) => item.id === payload.id);
+
+          console.log('inCart')
+          console.log(inCart)
+          if (inCart) {
+            MealsSlice.caseReducers.increaseQuan(state, {payload});
+            state.count= inCart.quan;
+          } else {
+            payload.tPrice=payload.price
+            state.carts.push(payload);
+            state.count=1;
+          }
+          MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
+        },
+        removeFromCart: (state, {payload}) => {
+          state.carts=state.carts.filter((cart)=>cart._id !== payload._id);
+          MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
+        },
+        clearCart: (state, {payload}) => {
+          state.carts=[];
+          state.totalPrice=0; 
+       },
+        increaseQuan: (state, {payload}) => {
+          state.carts.forEach(function(obj) {
+            if (obj._id === payload._id) {
+              obj.quan=obj.quan+1
+              obj.tPrice=obj.quan*obj.price
+            }
+        });
+        MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
+              },
+        decreaseQuan: (state, {payload}) => {
+          state.carts.forEach(function(obj) {
+            if (obj._id === payload._id) {
+              obj.quan=obj.quan-1
+              obj.tPrice=obj.quan*obj.price
+            }
+        });
+        MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
+      },
+        calculateTotalPrice: (state,{payload})=>{
+          state.totalPrice=0;
+          state.carts.forEach(function(obj) {
+            state.totalPrice= state.totalPrice+Number(obj.tPrice);
+        });
+  
         },
       
     },
@@ -131,7 +180,7 @@ export const fetchCats = createAsyncThunk(
 
   //export const {openModal,changeStatus,addToCart,removeFromCart,increaseQuan,decreaseQuan,clearCart,switchAsAdmin,searchItems} = MealSlice.actions;
 
-  export const {openModal,filterMeals} = MealsSlice.actions;
+  export const {openModal,filterMeals,addToCart,removeFromCart,clearCart,increaseQuan,decreaseQuan,calculateTotalPrice} = MealsSlice.actions;
 
   export default MealsSlice.reducer;
 

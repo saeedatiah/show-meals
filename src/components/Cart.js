@@ -1,39 +1,47 @@
 import React from 'react'
+import ItemCart from './ItemCart'
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
+  const {carts,totalPrice} =useSelector((state) => state.meals);
+  console.log('carts')
+  console.log(carts)
+  const cartList =
+  carts.length > 0
+      ? carts.map((cart) => (
+          <li
+            key={cart.id}
+          >
+          <ItemCart meal={cart}/>
+
+          
+          </li>
+        ))
+      : 'لايوجد طلب';
+
+
   return (
-    <article class="grid gap-y-6 text-white">
-  <div class="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] bg-zinc-800 gap-x-6">
-    <header class="grid col-start-2">
-      <h1>header</h1>
-    </header>
+    <div class="h-full flex flex-col ">
+    <div className='grid bg-cyan-300'>top</div>
+  
+  <div class="flex-1 grid  overflow-y-auto  ">
+  <ul>{cartList}</ul>
+
+  
+  
+
+
+
   </div>
-  <main class="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] bg-zinc-800 gap-x-6">
-    <section class="grid col-start-2">
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-      <h2>Main</h2>
-    </section>
-  </main>
-  <footer
-    class="grid grid-cols-[1fr_minmax(0px,1280px)_1fr] bg-zinc-800 gap-x-6"
-  >
-    <section class="grid col-start-2">
-      <h2>Footer</h2>
-    </section>
-  </footer>
-</article>
+  <div className='grid bg-cyan-300'>bottom</div>
+  </div>
+    
   )
 }
 
 export default Cart
+
+
+
+
+

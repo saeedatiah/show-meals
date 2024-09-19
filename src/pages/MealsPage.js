@@ -81,21 +81,23 @@ const MealsPage = () => {
       // : 'no Items found';
 
   return (
-//     <div>
+    <div>
+
+    
    
 
-//     <div class="  scrollbar-hide overflow-x-auto my-1">
-//             <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
-//     </div>
-//     <div className='content-center items-start'>
-//     <motion.div layout className="popular-movies">
-//     <ul className='flex flex-wrap gap-2  justify-around'>{meals&&orignalMeal}</ul> 
-//     </motion.div>
-// </div>
+    <div class="  scrollbar-hide overflow-x-auto -1">
+            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
+    </div>
+    <div className='content-center items-start'>
+    <motion.div layout className="popular-movies">
+    <ul className='grid grid-cols-2 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 
+    </motion.div>
+</div>
       
-//     </div>
+    </div>
 
-<Cart/>
+
   )
 }
 
