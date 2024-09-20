@@ -86,12 +86,12 @@ const MealsPage = () => {
     
    
 
-    <div class="  scrollbar-hide overflow-x-auto -1">
+    <div class="  scrollbar-hide overflow-x-auto my-2">
             <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
     </div>
-    <div className='content-center items-start'>
+    <div className='content-center items-start '>
     <motion.div layout className="popular-movies">
-    <ul className='grid grid-cols-2 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 
+    <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 
     </motion.div>
 </div>
       

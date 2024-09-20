@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const url="https://192.168.1.43:7067"
+const url="https://192.168.153.214:7067"
 
 
 
@@ -77,7 +77,7 @@ export const fetchCats = createAsyncThunk(
 
 
 
-  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,orignalMeals:[],carts:[],totalPrice:0,count:0};
+  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,orignalMeals:[],carts:[],totalPrice:0,count:0,catActive:"cat-0",isItemInCart:false};
 
 
 
@@ -88,6 +88,10 @@ export const fetchCats = createAsyncThunk(
         openModal: (state, action) => {
             state.isPageLoading = action.payload;
           },
+          catActiveChange: (state, action) => {
+            console.log(`cat-${action.payload}`) ;
+            state.catActive =`cat-${action.payload}` ;
+          },
         filterMeals: (state, action) => {
           //state.tempMeal=state.meals;
           if(action.payload.Id===0)
@@ -97,9 +101,7 @@ export const fetchCats = createAsyncThunk(
         },
         addToCart: (state, {payload}) => {
           const inCart= state.carts.find((item) => item.id === payload.id);
-
-          console.log('inCart')
-          console.log(inCart)
+          state.isItemInCart=true;
           if (inCart) {
             MealsSlice.caseReducers.increaseQuan(state, {payload});
             state.count= inCart.quan;
@@ -111,16 +113,20 @@ export const fetchCats = createAsyncThunk(
           MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
         },
         removeFromCart: (state, {payload}) => {
-          state.carts=state.carts.filter((cart)=>cart._id !== payload._id);
+          state.carts=state.carts.filter((cart)=>cart.id !== payload.id);
+          if(state.carts.length<1)
+            state.isItemInCart=false;
           MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
         },
         clearCart: (state, {payload}) => {
           state.carts=[];
           state.totalPrice=0; 
+          state.isItemInCart=false;
+
        },
         increaseQuan: (state, {payload}) => {
           state.carts.forEach(function(obj) {
-            if (obj._id === payload._id) {
+            if (obj.id === payload.id) {
               obj.quan=obj.quan+1
               obj.tPrice=obj.quan*obj.price
             }
@@ -129,10 +135,11 @@ export const fetchCats = createAsyncThunk(
               },
         decreaseQuan: (state, {payload}) => {
           state.carts.forEach(function(obj) {
-            if (obj._id === payload._id) {
+            if (obj.id === payload.id) {
               obj.quan=obj.quan-1
               obj.tPrice=obj.quan*obj.price
             }
+  
         });
         MealsSlice.caseReducers.calculateTotalPrice(state, {payload});
       },
@@ -180,7 +187,7 @@ export const fetchCats = createAsyncThunk(
 
   //export const {openModal,changeStatus,addToCart,removeFromCart,increaseQuan,decreaseQuan,clearCart,switchAsAdmin,searchItems} = MealSlice.actions;
 
-  export const {openModal,filterMeals,addToCart,removeFromCart,clearCart,increaseQuan,decreaseQuan,calculateTotalPrice} = MealsSlice.actions;
+  export const {openModal,filterMeals,addToCart,removeFromCart,clearCart,increaseQuan,decreaseQuan,calculateTotalPrice,catActiveChange} = MealsSlice.actions;
 
   export default MealsSlice.reducer;
 
