@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { VscClearAll } from "react-icons/vsc";
 import {clearCart} from '../store/MealsSlice';
 import { FaFileInvoiceDollar } from "react-icons/fa";
+import AnimatedNumbers from "react-animated-numbers"
+
+
 
 
 
@@ -36,7 +39,9 @@ const Cart = () => {
     <VscClearAll className='text-custom-2  w-7 h-7' />
 
     </div>
-      <div className='text-custom-2 font-bold align-middle'>{totalPrice}</div>
+      <div className='text-custom-2 font-bold align-middle '>
+      <div>{totalPrice}</div>
+      </div>
       <button className='flex justify-center mx-1 border-2 border-custom-2 p-1 rounded-lg'>
         <div><FaFileInvoiceDollar className='text-custom-2  w-5 h-5'/></div>
         <div className='text-custom-2 text-xs '>طلب الشراء</div>

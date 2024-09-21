@@ -6,8 +6,15 @@ import Meal from '../components/Meal';
 import Categories from '../components/Categories';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { motion, AnimatePresence } from "framer-motion";
-import FavMeal from '../components/FavMeal';
 import Cart from '../components/Cart';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import FavMeals from '../components/FavMeals';
+
+
 
 
 
@@ -87,11 +94,12 @@ const MealsPage = () => {
    
 
     <div class="  scrollbar-hide overflow-x-auto my-2">
-            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around'>{cats&&catsList}</ul> 
+    <FavMeals/>
+            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around '>{cats&&catsList}</ul> 
     </div>
     <div className='content-center items-start '>
     <motion.div layout className="popular-movies">
-    <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 
+     <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 
     </motion.div>
 </div>
       
@@ -102,3 +110,4 @@ const MealsPage = () => {
 }
 
 export default MealsPage
+// <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 

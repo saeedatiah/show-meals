@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const url="https://192.168.153.214:7067"
+const url="https://192.168.0.112:7067"
 
 
 
@@ -77,7 +77,7 @@ export const fetchCats = createAsyncThunk(
 
 
 
-  const initialStateReducer ={meals: [],cats:[],isPageLoading:false,orignalMeals:[],carts:[],totalPrice:0,count:0,catActive:"cat-0",isItemInCart:false};
+  const initialStateReducer ={meals: [],favMeals:[], cats:[],isPageLoading:false,orignalMeals:[],carts:[],totalPrice:0,count:0,catActive:"cat-0",isItemInCart:false};
 
 
 
@@ -159,6 +159,7 @@ export const fetchCats = createAsyncThunk(
             console.log('fulfilled');
             //state.isPageLoading=true;
             state.orignalMeals=payload;
+            state.favMeals=state.orignalMeals.filter((meal)=>meal.IsFav === "TRUE");
             state.meals=payload;
         })
         .addCase(fetchMeals.pending, (state, { payload }) => {
