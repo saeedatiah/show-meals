@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { VscClearAll } from "react-icons/vsc";
 import {clearCart} from '../store/MealsSlice';
 import { FaFileInvoiceDollar } from "react-icons/fa";
-import AnimatedNumbers from "react-animated-numbers"
 
 
 

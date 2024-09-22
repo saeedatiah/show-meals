@@ -19,8 +19,8 @@ const Meal = ({meal}) => {
       setAddToCartAnimi(false);
     }, 200);
     }
-   const imgurl=`https://192.168.0.112:7067/img/items/${meal.Id}.jfif`
-   const defImgurl=`https://192.168.0.112:7067/img/items/err.jfif`
+   const imgurl=`https://10.7.0.161:7067/img/items/${meal.Id}.jfif`
+   const defImgurl=`https://10.7.0.161:7067/img/items/err.jfif`
 
   return (
     <div className='overflow-hidden rounded-lg min-w-[100px] min-h-[80px] w-full h-36 relative' >

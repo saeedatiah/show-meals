@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 
 const ItemCart = ({meal}) => {
-  const imgurl=`https://192.168.0.112:7067/img/items/${meal.id}.jfif`
+  const imgurl=`https://10.7.0.161:7067/img/items/${meal.id}.jfif`
   const dispatch = useDispatch();
     const increase=()=>{
 

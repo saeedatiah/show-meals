@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const url="https://192.168.0.112:7067"
+const url="https://10.7.0.1612:7067"
 
 
 
