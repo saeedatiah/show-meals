@@ -55,7 +55,7 @@ const MealsPage = () => {
           <Categories cat={cat}/>
           </li>
         ))
-      : 'no Cats found';
+      : 'لايوجد تصنيفات';
 
      
 
@@ -72,7 +72,7 @@ const MealsPage = () => {
           </li>
           </AnimatePresence>
         ))
-      : 'no Items found';
+      : 'لايوجد اصناف';
       
 
 
@@ -90,15 +90,14 @@ const MealsPage = () => {
   return (
     <div>
 
-    
+    <FavMeals  />
    
 
-    <div class="  scrollbar-hide overflow-x-auto my-2">
-    <FavMeals/>
-            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around '>{cats&&catsList}</ul> 
+    <div class="  scrollbar-hide overflow-x-auto  py-2 sticky top-0 z-10 bg-white shadow-2xl">
+            <ul className='flex flex-nowrap gap-2 scrollbar-hide  justify-around   rounded-3xl'>{cats&&catsList}</ul> 
     </div>
     <div className='content-center items-start '>
-    <motion.div layout className="popular-movies">
+    <motion.div layout className="popular-movies z-0">
      <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-2  justify-around mx-2'>{meals&&orignalMeal}</ul> 
     </motion.div>
 </div>

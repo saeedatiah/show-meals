@@ -3,6 +3,8 @@ import shawrma from './shawrma.jpeg'
 import {addToCart} from '../store/MealsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { BiCart } from "react-icons/bi";
+import { TiArrowDownThick } from "react-icons/ti";
+
 
 
 
@@ -17,10 +19,10 @@ const Meal = ({meal}) => {
      setAddToCartAnimi(true);
      setTimeout(() => {
       setAddToCartAnimi(false);
-    }, 200);
+    }, 250);
     }
-   const imgurl=`https://10.7.0.161:7067/img/items/${meal.Id}.jfif`
-   const defImgurl=`https://10.7.0.161:7067/img/items/err.jfif`
+   const imgurl=`https://192.168.1.43:7067/img/items/${meal.Id}.jfif`
+   const defImgurl=`https://192.168.1.43:7067/img/items/err.jfif`
 
   return (
     <div className='overflow-hidden rounded-lg min-w-[100px] min-h-[80px] w-full h-36 relative' >
@@ -35,8 +37,14 @@ const Meal = ({meal}) => {
     <div className='absolute bottom-1 left-1 h-6 w-6 rounded-lg bg-custom-5 text-sm' onClick={addToCartFunc}>
 
     <div className='relative'>
+    <div className='relative'>
+    <TiArrowDownThick className={`absolute w-5 h-5 -top-4 opacity-0 ${addToCartAnimi? 'animate-tobottom':' animate-none'} `} />
+
+    <BiCart className={`w-6 h-6 `}/>
+
+    </div>
+
     
-    <BiCart className={`w-6 h-6 animate-fadeup ${addToCartAnimi  ? 'animate-toright' : 'animate-none'}`}/>
     {/* <div className='absolute -top-2 -right-2 w-4 h-4 bg-custom-4 rounded-full text-xs'>{meal.quan}</div> */}
     </div>
     </div>

@@ -1,10 +1,12 @@
 import React from 'react'
 import {increaseQuan,decreaseQuan,removeFromCart} from '../store/MealsSlice'
 import { useDispatch } from 'react-redux';
+import { RiDeleteBin5Fill } from "react-icons/ri";
+
 
 
 const ItemCart = ({meal}) => {
-  const imgurl=`https://10.7.0.161:7067/img/items/${meal.id}.jfif`
+  const imgurl=`https://192.168.1.43:7067/img/items/${meal.id}.jfif`
   const dispatch = useDispatch();
     const increase=()=>{
 
@@ -31,7 +33,11 @@ const ItemCart = ({meal}) => {
     <div className='absolute rounded-full overflow-hidden  h-20 w-20 bg-gray-500 -top-3 -left-3 border-4 border-white'>
     <img src={imgurl} alt="" className='w-full h-full object-cover'/>
     </div>
-    <div className='ml-16 h-full grid grid-cols-[70px_auto]'>
+    <div className='absolute align-middle top-2 left-[70px] ' onClick={removeCartFunc}>
+    <RiDeleteBin5Fill className='text-custom-4 w-6 h-9' />
+
+    </div>
+    <div className='ml-24 h-full grid grid-cols-[70px_auto]'>
 <div>
 
  <div className='flex-none grid grid-cols-4 bg-custom-3 rounded-full h-8 top-3 -right-4 border-2 border-white  absolute'>
@@ -41,10 +47,11 @@ const ItemCart = ({meal}) => {
  </div>
 
     </div>
-    <div className='grid grid-rows-3 text-custom-3 text-center'>
+    <div className='grid grid-rows-3 text-custom-3  text-center'>
     <div className='truncate'>{meal.name}</div>
     <div className='truncate'>{meal.tPrice}</div>
     </div>
+
     </div>
   </div>
       

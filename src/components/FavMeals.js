@@ -13,8 +13,8 @@ import { useSelector } from 'react-redux';
 const FavMeals = () => {
     const {favMeals} =useSelector((state)=>state.meals)
   return (
-    <div>
-    <div className='rounded-l-full bg-custom-5 w-32 text-custom-1 p-2'>الأكثر طلباً</div>
+    <div className='z-20'>
+    <div className='rounded-l-full bg-custom-5 w-32 text-custom-1 p-2 mt-2'>الأكثر طلباً</div>
     <Swiper watchSlidesProgress={true} autoplay={{ "delay": 2000, "disableOnInteraction": false }} modules={[Autoplay]} slidesPerView={3} className="mySwiper">
         
     {favMeals.map((meal) => (

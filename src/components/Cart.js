@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { VscClearAll } from "react-icons/vsc";
 import {clearCart} from '../store/MealsSlice';
 import { FaFileInvoiceDollar } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+
 
 
 
@@ -20,13 +22,16 @@ const Cart = () => {
     const cartList =
   carts.length > 0
       ? carts.map((cart) => (
-          <li
+        <AnimatePresence>
+        <li
             key={cart.id}
           >
           <ItemCart meal={cart}/>
 
           
           </li>
+        </AnimatePresence>
+          
         ))
       : 'لايوجد طلب';
 
@@ -38,7 +43,7 @@ const Cart = () => {
     <VscClearAll className='text-custom-2  w-7 h-7' />
 
     </div>
-      <div className='text-custom-2 font-bold align-middle '>
+      <div className='text-custom-2 text-2xl font-bold align-middle '>
       <div>{totalPrice}</div>
       </div>
       <button className='flex justify-center mx-1 border-2 border-custom-2 p-1 rounded-lg'>
@@ -48,7 +53,10 @@ const Cart = () => {
     </div>
   
   <div class="flex-1 grid  overflow-y-auto  ">
+  <motion.div layout className="popular-movies">
   <ul>{cartList}</ul>
+
+  </motion.div>
 
   
   

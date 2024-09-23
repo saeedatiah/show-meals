@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      theme: {
+      fontFamily: {
+        'sans': ['ui-sans-serif', 'system-ui']
+      },
+  },
 
       colors: { 
                 'custom-1': '#1D1A39', 
@@ -37,11 +42,25 @@ module.exports = {
           '75%':{transform:'translateY(15px) scale(1.6)', opacity:'0.6'},
           '100%':{transform:'translateY(20px) scale(1.8)', opacity:'0'},
         },
+        tobottom:{
+          '0%':{transform:'translateY(0px) ', opacity:'0'},
+          '10%':{transform:'translateY(2px) ', opacity:'0.1'},
+          '20%':{transform:'translateY(3px) ', opacity:'0.2'},
+          '30%':{transform:'translateY(4px) ', opacity:'0.3'},
+          '40%':{transform:'translateY(5px) ', opacity:'0.4'},
+          '50%':{transform:'translateY(6px) ', opacity:'0.5'},
+          '60%':{transform:'translateY(7px) ', opacity:'0.6'},
+          '70%':{transform:'translateY(8px) ', opacity:'0.7'},
+          '80%':{transform:'translateY(9px) ', opacity:'0.8'},
+          '90%':{transform:'translateY(10px) ', opacity:'0.9'},
+          '100%':{transform:'translateY(11px) ', opacity:'0'},
+        },
       },
 
       
       animation: {
-        toright: 'toright 0.8s ease ',
+        toright: 'toright 0.3s ease ',
+        tobottom: 'tobottom 0.25s ease ',
         fadeup: 'fadeup 0.5s ease  ',
       }
     },
