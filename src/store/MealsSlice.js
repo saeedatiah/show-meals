@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const url="https://192.168.1.43:7067"
+const url="http://localhost:4040"
 
 
 
@@ -14,15 +14,14 @@ export const fetchMeals = createAsyncThunk(
     console.log("aaaaaaaaa2");
 
     try {
+
       const res = await fetch(`${url}/Items`,{mode:"cors"});
       const data = await res.json();
       console.log("data from function reducer");
       console.log(data);
       return data;
     } catch (error) {
-      console.log("errrrrrrrrrror");
 
-      console.log('eeeeee');
       return rejectWithValue(error.message);
     }
   }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {filterMeals,catActiveChange} from '../store/MealsSlice'
 
 const Categories = ({cat}) => {
-  const imgurl=`https://192.168.1.43:7067/img/cats/${cat.Id}.jfif`
+  const imgurl=`http://localhost:4040/img/cats/${cat.Id}.jfif`
 
     
     const dispatch = useDispatch();

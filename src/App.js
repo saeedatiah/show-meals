@@ -7,6 +7,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaCircleInfo } from "react-icons/fa6";
 import { useSelector } from 'react-redux';
 import FavMeals from './components/FavMeals';
+import raw from './config.txt'
 
 
 
@@ -16,6 +17,9 @@ import FavMeals from './components/FavMeals';
 
 
 function App() {
+
+  //window.myGlobalVariable = { URL: 'helllllllllllllo Glooooooooooobal' };
+// console.log(window.myGlobalVariable.URL);
   const [active, setActive] = useState('tab-1');
 
   const changeTab = (event) => {
