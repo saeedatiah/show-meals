@@ -6,7 +6,7 @@ import { RiDeleteBin5Fill } from "react-icons/ri";
 
 
 const ItemCart = ({meal}) => {
-  const imgurl=`http://localhost:4040/img/items/${meal.id}.jfif`
+  const imgurl=`http://192.168.1.33:4040/img/items/${meal.id}.jpg`
   const dispatch = useDispatch();
     const increase=()=>{
 

@@ -21,8 +21,8 @@ const Meal = ({meal}) => {
       setAddToCartAnimi(false);
     }, 250);
     }
-   const imgurl=`http://localhost:4040/img/items/${meal.Id}.jfif`
-   const defImgurl=`http://localhost:4040:7067/img/items/err.jfif`
+   const imgurl=`http://192.168.1.33:4040/img/items/${meal.Id}.jpg`
+   const defImgurl=`http://192.168.1.33:4040:7067/img/items/err.jpg`
 
   return (
     <div className='overflow-hidden rounded-lg min-w-[100px] min-h-[80px] w-full h-36 relative' >
@@ -31,16 +31,16 @@ const Meal = ({meal}) => {
                 from-black to-transparent text-white  font-bold drop-shadow-lg' >
     {meal.Name}
 </div>
-    <div className='absolute bottom-0 right-0 bg-custom-5 font-bold h-4 rounded-tl-lg text-xs w-10 text-white overflow-hidden'>
+    <div className='absolute bottom-0 right-0 bg-custom-4 font-bold h-4 rounded-tl-lg text-xs w-10 text-custom-5 overflow-hidden'>
         {meal.Price}
     </div>
-    <div className='absolute bottom-1 left-1 h-6 w-6 rounded-lg bg-custom-5 text-sm' onClick={addToCartFunc}>
+    <div className='absolute bottom-1 left-1 h-6 w-6 rounded-lg bg-custom-4 text-sm' onClick={addToCartFunc}>
 
     <div className='relative'>
     <div className='relative'>
-    <TiArrowDownThick className={`absolute w-5 h-5 -top-4 opacity-0 ${addToCartAnimi? 'animate-tobottom':' animate-none'} `} />
+    <TiArrowDownThick className={`absolute text-custom-5 w-5 h-5 -top-4 opacity-0 ${addToCartAnimi? 'animate-tobottom':' animate-none'} `} />
 
-    <BiCart className={`w-6 h-6 `}/>
+    <BiCart className={`w-6 h-6 text-custom-5`}/>
 
     </div>
 

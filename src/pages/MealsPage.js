@@ -20,10 +20,8 @@ import FavMeals from '../components/FavMeals';
 
 
 const MealsPage = () => {
-    console.log("aaaaaaaaa00000009");
 
     const dispatch = useDispatch();
-    console.log("aaaaaaaa");
 
     // {fetchMeals} =slice;
     //dispatch(fetchMeals());
@@ -39,9 +37,6 @@ const MealsPage = () => {
       // console.log("aaaaaaaaa1");
 
       const {meals,cats} =useSelector((state) => state.meals);
-      const test =useSelector((state) => state);
-      console.log("***********")
-      console.log(cats)
       //const cats =useSelector((state) => state.ctas);//problem
        //const cats=[];
       console.log("aaaaaaaaa3");
