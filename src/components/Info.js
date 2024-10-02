@@ -14,8 +14,8 @@ const Info = () => {
     <div className='text-xl font-bold text-custom-4  '>متخصصون في عمل البيتزا والفطائر </div>
     <div className='text-lg font-semibold  text-custom-4  '>*يوجد لدينا*</div>
     <div className='text-lg  text-custom-4  '> قسم خاص للعوائل </div>
-    <div className='text-lg  text-custom-4  '> حديقة خارجية </div>
-    <div className='text-lg  text-custom-4  '> قسم التوصيل </div>
+    <div className='text-lg  text-custom-4  '> جلسات خارجية </div>
+    <div className='text-lg  text-custom-4  '> قسم خاص بالنساء </div>
     <div className='text-lg font-semibold text-custom-4  '>*حساباتنا على السوشال ميديا*</div>
     <div className='text-lg  text-custom-4 flex flex-row items-center'><FaSquareInstagram/>pizza_house66  </div>
     <div className='text-lg  text-custom-4 flex flex-row items-center'><FaSquareWhatsapp/>772207788  </div>
