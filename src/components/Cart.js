@@ -5,6 +5,8 @@ import { VscClearAll } from "react-icons/vsc";
 import {clearCart} from '../store/MealsSlice';
 import { FaFileInvoiceDollar } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 
 
@@ -13,6 +15,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 
 const Cart = () => {
+  const notify = () => toast('سيتم تفعيل هذه الخدمة قريبا');
+
   const {carts,totalPrice} =useSelector((state) => state.meals);
   const dispatch = useDispatch();
 
@@ -38,6 +42,7 @@ const Cart = () => {
 
   return (
     <div class="h-full flex flex-col mt-3">
+    <Toaster />
     <div className='grid grid-cols-3'>
     <div className='flex justify-center' onClick={clearAllCart}>
     <VscClearAll className='text-custom-2  w-7 h-7' />
@@ -46,7 +51,7 @@ const Cart = () => {
       <div className='text-custom-2 text-2xl font-bold align-middle '>
       <div>{totalPrice}</div>
       </div>
-      <button className='flex justify-center mx-1 border-2 border-custom-2 p-1 rounded-lg'>
+      <button onClick={notify} className='flex justify-center mx-1 border-2 border-custom-2 p-1 rounded-lg'>
         <div><FaFileInvoiceDollar className='text-custom-2  w-5 h-5'/></div>
         <div className='text-custom-2 text-xs '>طلب الشراء</div>
       </button>
